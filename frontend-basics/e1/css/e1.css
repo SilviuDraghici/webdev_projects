@@ -1,13 +1,8 @@
-body, h1 { margin: 0;}
+body { margin: 0; }
 
-html, body, .main-container {
-    height: 100%;
-}
+html, body, .main-container { height: 100%; }
 
-#main-header {
-    background-color: #FECCCB;
-    height: 70pt;
-}
+h1, h3, p { margin: 5pt; }
 
 .main-container {
     display: flex;
@@ -20,6 +15,12 @@ html, body, .main-container {
 
     display: flex;
     align-items: stretch;
+}
+
+
+#main-header {
+    background-color: #FECCCB;
+    height: 70pt;
 }
 
 .contents {
@@ -39,12 +40,11 @@ html, body, .main-container {
 }
 
 .Footer {
-    overflow: auto;
     background-color: #CCCCFE;
-    
 }
 
 .Footer #e2-link {
     font-weight: bold;
-    padding: 5pt;
+    box-sizing: border-box;
+    margin: 5pt;
 }
