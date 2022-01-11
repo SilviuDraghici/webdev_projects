@@ -1,0 +1,51 @@
+body, h1 { margin: 0;}
+
+* {
+    font-family: 'Trebuchet MS', sans-serif;
+}
+
+body {
+    background-color: #EFF0F2;
+    height: 70pt;
+}
+
+h1 {
+    margin-top: 20px;
+    text-align:center;
+}
+h2 {
+    text-align:center;
+    color: grey;  
+}
+
+.message-form .form-group {
+    margin-bottom: 10px;
+}
+
+.message-form label {
+    font-weight: bold;
+    display: block;
+}
+
+.message-form input, .message-form textarea {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.message-form textarea {
+    height: 100px;
+}
+
+.message-form button {
+    background-color: #8ED941;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 10px;
+    
+    /* This centers it*/
+    display: block;
+    margin: 0 auto;
+}
