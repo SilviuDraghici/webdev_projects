@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>webdev-basics</title>
+    <script src="index.js"></script>
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+
+<body>
+
+    <div class="navBar">
+        <input  id="radio1" type="radio" name="navOptions" onclick='setContent("iframe","e1/e1.html")' checked>
+        <label for="radio1">Exercise 1</label>
+
+        <input  id="radio2" type="radio" name="navOptions" onclick='setContent("iframe","e2/e2.html")'>
+        <label for="radio2">Exercise 2</label>
+
+        <input  id="radio3" type="radio" name="navOptions" onclick='setContent("iframe","e3/e3.html")'>
+        <label for="radio3">Exercise 3</label>
+
+        <input  id="radio4" type="radio" name="navOptions" onclick='setContent("iframe","e4/e4.html")'>
+        <label for="radio4">Exercise 4</label>
+
+        <input  id="radio5" type="radio"name="navOptions" onclick='setContent("iframe","e5/e5.html")'>
+        <label for="radio5">Exercise 5</label>
+
+    </div>
+    <iframe id="iframe" src="e1/e1.html" scrolling="no" frameborder="0"></iframe>
+</body>
