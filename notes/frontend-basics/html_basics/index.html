@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>HTML Cheat Sheet</title>
+	</head>
+	<body>
+	
+		<a href="blog.html">Go to Blog</a>
+		<hr>
+	
+		<!-- Headings: --->
+		<h1>Heading One</h1>
+		<h2>Heading Two</h2>
+		<h3>Heading Three</h3>
+		<h4>Heading Four</h4>
+		<h5>Heading Five</h5>
+		<h6>Heading Six</h6>
+		
+		<!-- Paragraph: --->
+		<p>
+		    It was a bright cold day in April, and the clocks were striking thirteen.
+		    Perhaps one did not want to be loved so much as to be understood.
+		    Doublethink means the power of holding two contradictory beliefs in one's
+			mind simultaneously, and accepting both of them.
+		</p>
+		<p>
+		    Don’t you see that the whole aim of <strong><a href="https://en.wikipedia.org/wiki/Newspeak" target="_blank">Newspeak</a></strong> is to narrow the range of 
+			thought? In the end we <em>shall make thoughtcrime literally impossible</em>,
+			because there will be no words in which to express it.
+		</p>
+		
+		<!--- Lists --->
+		<!-- Unordered list: ul --->
+		<ul>
+			<li>List item 1</li>
+			<li>List item 2</li>
+			<li>List item 3</li>
+			<li>List item 4</li>
+		</ul>
+		<!-- Ordered list: ul --->
+		<ol>
+			<li>List item 1</li>
+			<li>List item 2</li>
+			<li>List item 3</li>
+			<li>List item 4</li>
+		</ol>
+		
+		<!--- Table --->
+		<table>
+			<thead>
+				<tr><!--- table row --->
+					<th>Name</th><!--- The text in <th> elements are bold and centered by default.--->
+					<th>Email</th>
+					<th>Age</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<tr>
+					<td>Winston</td>
+					<td>sfadfsaf</td>
+					<td>39</td>
+				</tr>
+				<tr>
+					<td>Julia</td>
+					<td>sfadfsaf</td>
+					<td>26</td>
+				</tr>
+				<tr>
+					<td>O'Brien</td>
+					<td>sfadfsaf</td>
+					<td>48</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<br> <!--- Line Break--->
+		<hr> <!--- Horizontal Rule --->
+		<br>
+		
+		<!---Forms--->
+		<form>
+			<div><!--- Block level: ie. on it's own line --->
+				<label>First Name</label>
+				<input type="text" name="first-name"
+				       placeholder="Enter first Nme">
+			</div>
+			<br>
+			<div>
+			<label>Last Name</label>
+			<input type="text" name="last-name">
+			</div>
+			<br>
+			<div>
+				<label>Email</label>
+				<input type="email" name="email">
+			</div>
+			<br>
+			<div>
+				<label>Message</label>
+				<textarea name="message"></textarea>
+			</div>
+			<br>
+			<div>
+				<label>Gender</label>
+				<select name="Gender">
+					<option value="male">Male</option>
+					<option value="female">Female</option>
+				</select>
+			</div>
+			<br>
+			<div>
+				<label>Age</label>
+				<input type="number" name="age" value="25">
+			</div>
+			<br>
+			<div>
+				<label>Birthday</label>
+				<input type="date" name="birthday">
+			</div>
+			<input type"submit" name="submit" value="Click to Submit">
+		</form>
+		
+		<br>
+		
+		<button>Click Me</button>
+		
+		<br>
+		<br>
+		
+		<!--- Images --->
+		<a href="img/fancy_kitchen.png">
+			<img src="img/fancy_kitchen.png" alt="Text if image not found"
+		         width=500>
+		</a>
+		
+		
+		<!--- Quotations --->
+		<blockquote cite="https://casual-effects.com/data/">All meshes are packaged as zip
+			files using OBJ and PNG to simplify loading in a research and prototyping environment.
+			My collaborators and I have converted most of these models from their original formats
+			and corrected geometry and texture errors. The dataset is constantly growing and 
+			improving.
+		<blockquote>
+		
+		<p><abbr title="Physically Based Rendering">PBR</abbr> makes for excellent looking renders!</p>
+		
+	</body>
+</html>
