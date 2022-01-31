@@ -22,3 +22,12 @@ nav {
     -o-transition: color 0.5s ease-in-out;
     transition: color 0.5s ease-in-out;
 }
+
+div {
+    height: 25vh;
+    text-align: center;
+}
+
+:focus {
+    outline: none;
+}
