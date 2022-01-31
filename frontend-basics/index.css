@@ -36,3 +36,17 @@ iframe {
 .navBar label:hover {
     background-color: gray;
 }
+
+
+
+.navBar input#radio6+label {
+    background-color: black;
+}
+
+.navBar input#radio6:checked+label {
+    background-color: teal;
+}
+
+.navBar input#radio6:hover+label {
+    background-color: gray;
+}
