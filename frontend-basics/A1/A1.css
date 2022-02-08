@@ -1,5 +1,11 @@
+
 nav {
-    height: 7vh;
+    height: 64px;
+    background-color: #2F2E2E !important;
+}
+
+#under_navbar {
+    height: 64px;
 }
 
 .navBar input[type="radio"] {
@@ -10,9 +16,10 @@ nav {
     float: left;
     color: #f2f2f2;
     text-align: center;
-    padding: 14px 16px;
+    padding: 14px 40px;
     text-decoration: none;
     font-size: 17px;
+    font-family: sans-serif;
 }
 
 .navBar input[type="radio"]:hover+label {
@@ -23,11 +30,46 @@ nav {
     transition: color 0.5s ease-in-out;
 }
 
-div {
-    height: 25vh;
-    text-align: center;
-}
 
 :focus {
     outline: none;
+}
+
+div {
+    text-align: center;
+}
+
+.section{
+    background-color: white;
+    width: 100%;
+}
+
+p {
+    margin-bottom: 0 !important;
+}
+
+.parallax-container {
+    position: relative;
+}
+
+.foreground,
+.background {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.background {
+    z-index: -1;
+}
+
+#Home_img{
+    height: 50vh;
+    width: 100%;
+    object-fit: cover;
+}
+
+#Home {
+    height: 50vh;
 }
