@@ -188,6 +188,15 @@ p {
     max-width: 80%;
 }
 
+.item_listing .body .title {
+    max-width: 80%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
 .item_listing .body span {
     margin-top: 20px;
     margin-bottom: 10px;
