@@ -59,7 +59,7 @@ p {
 }
 
 .background {
-    z-index: -1;
+    z-index: -5;
 }
 
 #Home, #Home #background_img, #Home #background, #Home #foreground {
@@ -108,7 +108,7 @@ p {
     width: auto;
 }
 
-#Collection #bar {
+#bar {
     width: 90px;
     height: 3px;
     margin-bottom: 10px;
@@ -116,12 +116,12 @@ p {
     background: #2F2E2E;
 }
 
-#listings .row {
+.row {
     width: 951px;
 }
 
 @media(max-width: 951px) {
-    #listings .row {
+    .row {
         width: 100%;
     }
 }
@@ -221,4 +221,101 @@ p {
     border-width: 3px;
     margin-top: 18px;
     margin-bottom: 18px;
+}
+
+#About_Us, #About_Us #foreground {
+    height: 1070px;
+}
+
+#About_Us #header {
+    padding: 30px 0px;
+    font-family: avenir-lt-w01_35-light1475496, sans-serif;
+    display: inline-block;
+    background: #faf9f9;
+    width: 35%;
+}
+
+#About_Us video{
+    width: 100%;
+    height: auto;
+}
+
+#About_Us #header h1 {
+    padding-top: 40px;
+}
+
+#About_Us #header p {
+    text-align: center;
+    width: 70%;
+    margin: 0 auto;
+    padding-bottom: 20px;
+}
+
+#final_images img {
+    width: 50%;
+    height: auto;
+}
+
+#Contact {
+    background-color: rgb(176, 170, 169) !important;
+}
+
+#Contact #header {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 30px 0px;
+    font-family: avenir-lt-w01_35-light1475496, sans-serif;
+    display: inline-block;
+    background: #faf9f9;
+    width: 35%;
+}
+
+#Contact #header h1 {
+    padding-top: 30px;
+}
+
+#Contact #header #bar {
+    margin: 20px 0px;
+}
+
+#Contact form{
+    width: 90%;
+    border: #2F2E2E;
+    border-style: solid;
+    border-width: 2px;
+    margin: 0 auto;
+}
+
+#Contact form input{
+    border: #2F2E2E;
+    border-style: solid;
+    border-width: 1px;
+    height: 60px;
+}
+
+#Contact form textarea{
+    border: #2F2E2E;
+    border-style: solid;
+    border-width: 1px;
+    height: 60px;
+    min-height: 120px;
+}
+
+#end {
+    background-color: #2F2E2E !important;
+}
+
+#end #soc_med_img {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 30px;
+    height: auto;
+}
+
+#end p{
+    color: white;
+    margin-top: 10px;
+    padding-bottom: 50px;
 }
