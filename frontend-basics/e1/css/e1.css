@@ -1,0 +1,56 @@
+body {
+    margin: 0;
+}
+
+html, body, .main-container {
+    height: 100%;
+}
+
+h1, h3, p {
+    margin: 5pt;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.inner-container {
+    flex: 2;
+
+    display: flex;
+    align-items: stretch;
+}
+
+
+#main-header {
+    background-color: #FECCCB;
+    height: 70pt;
+}
+
+.contents {
+    background-color: #FFFFCB;
+    order: 2;
+}
+
+.LSide {
+    background-color: #FECCFF;
+    order: 1;
+}
+
+.RSide {
+    background-color: #CCFFFF;
+    width: 100pt;
+    order: 3;
+}
+
+.Footer {
+    background-color: #CCCCFE;
+}
+
+.Footer #e2-link {
+    font-weight: bold;
+    box-sizing: border-box;
+    margin: 5pt;
+}

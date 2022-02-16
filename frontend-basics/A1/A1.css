@@ -1,0 +1,321 @@
+nav {
+    height: 64px;
+    background-color: #2F2E2E !important;
+}
+
+#under_navbar {
+    height: 64px;
+}
+
+.navBar input[type="radio"] {
+    display: none;
+}
+
+.navBar label {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 40px;
+    text-decoration: none;
+    font-size: 17px;
+    font-family: sans-serif;
+}
+
+.navBar input[type="radio"]:hover+label {
+    color: #D1CAC9;
+    -webkit-transition: color 0.5s ease-in-out;
+    -moz-transition: color 0.5s ease-in-out;
+    -o-transition: color 0.5s ease-in-out;
+    transition: color 0.5s ease-in-out;
+}
+
+:focus {
+    outline: none;
+}
+
+div {
+    text-align: center;
+}
+
+.section {
+    background-color: #FAFAFA;
+    width: 100%;
+}
+
+p {
+    margin-bottom: 0 !important;
+}
+
+.parallax-container {
+    position: relative;
+}
+
+.foreground,
+.background {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.background {
+    z-index: -5;
+}
+
+#Home, #Home #background_img, #Home #background, #Home #foreground {
+    height: 140vh;
+}
+
+#Home #background_img {
+    width: 100%;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+#Home #foreground {
+    background: rgba(209, 202, 201, 0.8);
+}
+
+#Home #logo {
+    margin-top: 85px;
+    width: 342px;
+    height: auto;
+
+}
+
+#Home #soc_med_container {
+    position: absolute;
+    bottom: 15px;
+    width: 100%
+}
+
+#Home #soc_med_img {
+    margin: 5px;
+    width: 50px;
+    height: auto;
+}
+
+#Collection {
+    padding-top: 40px;
+    padding-bottom: 100px;
+}
+
+#Collection #header {
+    padding: 30px 250px;
+    font-family: avenir-lt-w01_35-light1475496, sans-serif;
+    display: inline-block;
+    background: #D1CAC9;
+    width: auto;
+}
+
+#bar {
+    width: 90px;
+    height: 3px;
+    margin-bottom: 10px;
+    display: inline-block;
+    background: #2F2E2E;
+}
+
+.row {
+    width: 951px;
+}
+
+@media(max-width: 951px) {
+    .row {
+        width: 100%;
+    }
+}
+
+.item_listing .sub_box {
+    width: 200px;
+    height: 200px;
+}
+
+.item_listing .img_back {
+    max-width: 100%;
+    background: white;
+    position: relative;
+}
+
+.item_listing img {
+    max-width: 100%;
+    height: 293px;
+    object-fit: contain;
+}
+
+.item_listing .more_options {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    background-color: rgb(47, 46, 46) !important;
+    color: rgba(255, 255, 255, 1) !important;
+    height: 0px;
+    -webkit-transition: height 0.5s ease-in-out;
+    -moz-transition: height 0.5s ease-in-out;
+    -o-transition: height 0.5s ease-in-out;
+    transition: height 0.5s ease-in-out;
+}
+
+.item_listing .more_options p {
+    height: 100%;
+    padding-top: 18px;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+.item_listing .img_back:hover .more_options {
+    height: 60px;
+    -webkit-transition: height 0.5s ease-in-out;
+    -moz-transition: height 0.5s ease-in-out;
+    -o-transition: height 0.5s ease-in-out;
+    transition: height 0.5s ease-in-out;
+}
+
+.item_listing .img_back:hover+.body .amazon_button {
+    border-width: 3px;
+    margin-top: 18px;
+    margin-bottom: 18px;
+}
+
+.item_listing .body {
+    max-width: 100%;
+    background: #D1CAC9;
+    margin-bottom: 20px;
+}
+
+
+.item_listing .body p {
+    max-width: 80%;
+}
+
+.item_listing .body .title {
+    max-width: 80%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.item_listing .body span {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.item_listing .body img {
+    margin-left: 10px;
+    max-width: 40%;
+    height: auto;
+}
+
+.item_listing .body .amazon_button {
+    border: #2F2E2E;
+    border-style: solid;
+    border-width: 1px;
+    padding: 10px 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.item_listing .body .amazon_button:hover {
+    border-width: 3px;
+    margin-top: 18px;
+    margin-bottom: 18px;
+}
+
+#About_Us, #About_Us #foreground {
+    height: 1070px;
+}
+
+#About_Us #header {
+    padding: 30px 0px;
+    font-family: avenir-lt-w01_35-light1475496, sans-serif;
+    display: inline-block;
+    background: #faf9f9;
+    width: 35%;
+}
+
+#About_Us video{
+    width: 100%;
+    height: auto;
+}
+
+#About_Us #header h1 {
+    padding-top: 40px;
+}
+
+#About_Us #header p {
+    text-align: center;
+    width: 70%;
+    margin: 0 auto;
+    padding-bottom: 20px;
+}
+
+#final_images img {
+    width: 50%;
+    height: auto;
+}
+
+#Contact {
+    background-color: rgb(176, 170, 169) !important;
+}
+
+#Contact #header {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 30px 0px;
+    font-family: avenir-lt-w01_35-light1475496, sans-serif;
+    display: inline-block;
+    background: #faf9f9;
+    width: 35%;
+}
+
+#Contact #header h1 {
+    padding-top: 30px;
+}
+
+#Contact #header #bar {
+    margin: 20px 0px;
+}
+
+#Contact form{
+    width: 90%;
+    border: #2F2E2E;
+    border-style: solid;
+    border-width: 2px;
+    margin: 0 auto;
+}
+
+#Contact form input{
+    border: #2F2E2E;
+    border-style: solid;
+    border-width: 1px;
+    height: 60px;
+}
+
+#Contact form textarea{
+    border: #2F2E2E;
+    border-style: solid;
+    border-width: 1px;
+    height: 60px;
+    min-height: 120px;
+}
+
+#end {
+    background-color: #2F2E2E !important;
+}
+
+#end #soc_med_img {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 30px;
+    height: auto;
+}
+
+#end p{
+    color: white;
+    margin-top: 10px;
+    padding-bottom: 50px;
+}
