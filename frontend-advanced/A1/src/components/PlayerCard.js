@@ -1,22 +1,13 @@
-import { useState } from 'react';
-
 import { DropdownButton, Dropdown } from 'react-bootstrap';
 
-const PlayerCard = ({ name, playerNum }) => {
-    const [colorAssignment, updateColorAssignment] = useState(["white", "white", "white", "white"]);
+import { useState } from 'react';
 
-    const setColor = (color) => {
-        //console.log(`color selected: ${color}`);
-        updateColorAssignment(assignment => {
-            assignment[playerNum - 1] = color;
-            console.log(`new color assignment: ${assignment}`);
-            return assignment;
-        });
-    }
+const PlayerCard = ({ name, playerNum, setColor, colorAssignment }) => {
+    const [color, updateColor] = useState(colors["white"]);
 
     return (
         <div className="card col-12 col-md-5 mb-4 "
-            style={{ ...PlayerCardStyle, ...colors[colorAssignment[playerNum - 1]] }}>
+            style={{ ...PlayerCardStyle, ...color }}>
             <div className="card-header text-center"
                 style={headerStyle}>
                 <header>
@@ -26,7 +17,10 @@ const PlayerCard = ({ name, playerNum }) => {
             <div className="card-body">
                 <DropdownButton id="dropdown-basic-button" title="Select Color"
                     variant="dark"
-                    onSelect={setColor}>
+                    onSelect={(color) => {
+                        setColor(color, playerNum)
+                        updateColor(colors[color])
+                    }}>
                     <Dropdown.Item eventKey="red"
                         style={colors["red"]}>red</Dropdown.Item>
                     <Dropdown.Item eventKey="green"
