@@ -23,7 +23,9 @@ const AvailableColors = ({ colors, assignedColors }) => {
                 <Dropdown.Item eventKey="yellow"
                     style={colors['yellow']}>yellow</Dropdown.Item>
                 : null}
-
+            <Dropdown.Divider />
+            <Dropdown.Item eventKey="white"
+                    style={colors['white']}>reset</Dropdown.Item>
         </>
     )
 }
