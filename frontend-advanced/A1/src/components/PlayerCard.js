@@ -1,4 +1,4 @@
-import { DropdownButton, Dropdown } from 'react-bootstrap';
+import { DropdownButton } from 'react-bootstrap';
 
 import { useState } from 'react';
 
@@ -17,15 +17,14 @@ const PlayerCard = ({ name, playerNum, assignColor }) => {
                 </header>
             </div>
             <div className="card-body">
-                    <DropdownButton id="dropdown-basic-button" title="Select Color"
-                        variant="dark"
-                        onSelect={(color) => {
-                            assignColor(color, playerNum)
-                            updateColor(colors[color])
-                        }}>
-                        <AvailableColors colors={colors} />
-                    </DropdownButton>
-               
+                <DropdownButton id="dropdown-basic-button" title="Select Color"
+                    variant="dark"
+                    onSelect={(color) => {
+                        assignColor(color, playerNum)
+                        updateColor(colors[color])
+                    }}>
+                    <AvailableColors colors={colors} />
+                </DropdownButton>
             </div>
         </div >
     )

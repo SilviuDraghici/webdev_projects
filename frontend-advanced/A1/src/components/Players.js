@@ -8,11 +8,10 @@ const Players = () => {
 
     const assignColor = (color, playerNum) => {
         //console.log(`color selected: ${color}`);
-        updateAssignedColors(assignment => {
-            assignment[playerNum - 1] = color;
-            console.log(`new color assignment: ${assignment}`);
-            return assignment;
-        });
+        const newAssignment = [...assignedColors];
+        newAssignment[playerNum - 1] = color;
+        console.log(`new color assignment: ${newAssignment}`);
+        updateAssignedColors(newAssignment);
     }
 
     return (
