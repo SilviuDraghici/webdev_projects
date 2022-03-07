@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import AvailableColors from './AvailableColors';
 
-const PlayerCard = ({ name, playerNum, assignColor, assignedColors }) => {
+const PlayerCard = ({ name, playerNum, assignColor }) => {
     const [color, updateColor] = useState(colors["white"]);
 
     return (
@@ -17,14 +17,15 @@ const PlayerCard = ({ name, playerNum, assignColor, assignedColors }) => {
                 </header>
             </div>
             <div className="card-body">
-                <DropdownButton id="dropdown-basic-button" title="Select Color"
-                    variant="dark"
-                    onSelect={(color) => {
-                        assignColor(color, playerNum)
-                        updateColor(colors[color])
-                    }}>
-                    <AvailableColors colors={colors} assignedColors={assignedColors}/>
-                </DropdownButton>
+                    <DropdownButton id="dropdown-basic-button" title="Select Color"
+                        variant="dark"
+                        onSelect={(color) => {
+                            assignColor(color, playerNum)
+                            updateColor(colors[color])
+                        }}>
+                        <AvailableColors colors={colors} />
+                    </DropdownButton>
+               
             </div>
         </div >
     )
@@ -59,6 +60,14 @@ const colors = {
     },
     yellow: {
         backgroundColor: 'yellow'
+    },
+    purple: {
+        backgroundColor: 'purple',
+        color: 'black'
+    },
+    orange: {
+        backgroundColor: 'orange',
+        color: 'black'
     }
 }
 
