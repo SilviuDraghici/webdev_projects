@@ -5,7 +5,7 @@ import { useState } from 'react';
 import AvailableColors from './AvailableColors';
 
 const PlayerCard = ({ name, playerNum, assignColor }) => {
-    const [color, updateColor] = useState(colors["white"]);
+    const [color, updateColor] = useState(colors["default"]);
 
     return (
         <div className="card col-12 col-md-5 mb-4 "
@@ -41,7 +41,7 @@ const headerStyle = {
 }
 
 const colors = {
-    white: {
+    default: {
         backgroundColor: 'white',
         color: 'black'
     },
@@ -58,7 +58,8 @@ const colors = {
         color: 'white'
     },
     yellow: {
-        backgroundColor: 'yellow'
+        backgroundColor: 'yellow',
+        color: 'black'
     },
     purple: {
         backgroundColor: 'purple',

@@ -4,7 +4,7 @@ import PlayerCard from './PlayerCard';
 import AssignedColorsContext from './AssignedColorsContext';
 
 const Players = () => {
-    const [assignedColors, updateAssignedColors] = useState(["white", "white", "white", "white"]);
+    const [assignedColors, updateAssignedColors] = useState(["default", "default", "default", "default"]);
 
     const assignColor = (color, playerNum) => {
         //console.log(`color selected: ${color}`);

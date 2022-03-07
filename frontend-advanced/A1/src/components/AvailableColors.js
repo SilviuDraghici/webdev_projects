@@ -6,9 +6,7 @@ import { useContext } from 'react';
 import AssignedColorsContext from './AssignedColorsContext';
 
 const AvailableColors = ({ colors }) => {
-
     const assignedColors = useContext(AssignedColorsContext);
-    console.log(`assigned Colors: ${assignedColors}`);
 
     return (
         <>
@@ -38,8 +36,8 @@ const AvailableColors = ({ colors }) => {
                 : null}
 
             <Dropdown.Divider />
-            <Dropdown.Item eventKey="white"
-                style={colors['white']}>reset</Dropdown.Item>
+            <Dropdown.Item eventKey="default"
+                style={colors['default']}>reset</Dropdown.Item>
 
         </>
     )
