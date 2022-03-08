@@ -1,24 +1,21 @@
 import "./styles.css";
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Header from "./components/Header";
-import Players from './components/Players';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import GameLobby from "./components/GameLobby";
+import About from "./components/About";
+
 
 function App() {
   return (
-    <div className="d-flex flex-column align-items-center"
-      style={pageStyle}>
-      <Header />
-      <Players />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<GameLobby />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </Router>
   );
-}
-
-
-const pageStyle = {
-  backgroundColor: '#565051',
-  height: '100%'
 }
 
 export default App;
