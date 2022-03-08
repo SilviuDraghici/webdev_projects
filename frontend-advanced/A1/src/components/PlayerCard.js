@@ -1,12 +1,14 @@
 import { DropdownButton } from 'react-bootstrap';
 
-import { useState } from 'react';
+import { useContext } from 'react';
 
 import AvailableColors from './AvailableColors';
+import AssignedColorsContext from './AssignedColorsContext';
 
-const PlayerCard = ({ name, playerNum, assignColor }) => {
-    const [color, updateColor] = useState(colors["default"]);
-
+const PlayerCard = ({ name, playerNum }) => {
+    const { assignedColors, assignColor } = useContext(AssignedColorsContext);
+    const color = colors[assignedColors[playerNum - 1]];
+    
     return (
         <div className="card col-12 col-md-5 mb-4 "
             style={{ ...PlayerCardStyle, ...color }}>
@@ -21,7 +23,6 @@ const PlayerCard = ({ name, playerNum, assignColor }) => {
                     variant="dark"
                     onSelect={(color) => {
                         assignColor(color, playerNum)
-                        updateColor(colors[color])
                     }}>
                     <AvailableColors colors={colors} />
                 </DropdownButton>

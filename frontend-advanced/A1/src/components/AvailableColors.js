@@ -6,8 +6,8 @@ import { useContext } from 'react';
 import AssignedColorsContext from './AssignedColorsContext';
 
 const AvailableColors = ({ colors }) => {
-    const assignedColors = useContext(AssignedColorsContext);
-
+    const {assignedColors,} = useContext(AssignedColorsContext);
+    
     return (
         <>
             {!assignedColors.includes("red") ?
