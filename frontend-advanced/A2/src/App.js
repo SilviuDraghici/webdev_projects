@@ -21,15 +21,13 @@ function App() {
   }
 
   return (
-    <AssignedColorsContext.Provider value={{assignedColors, assignColor}}>
-    <Router>
-      
+    <AssignedColorsContext.Provider value={{ assignedColors, assignColor }}>
+      <Router>
         <Routes>
           <Route path="/" element={<GameLobby />} />
           <Route path="/about" element={<About />} />
         </Routes>
-      
-    </Router>
+      </Router>
     </AssignedColorsContext.Provider>
   );
 }
