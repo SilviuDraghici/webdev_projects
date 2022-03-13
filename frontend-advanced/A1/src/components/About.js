@@ -7,7 +7,7 @@ const About = () => {
     const { assignedColors, assignColor } = useContext(AssignedColorsContext);
     return (
         <>
-            <p className="ms-2">*TODO* (Busy playing Elden Ring!)  </p>
+            <p className="ms-2">*TODO* (Busy playing Elden Ring!) </p>
             <p className="ms-2">player 1: {assignedColors[0]} </p>
             <p className="ms-2">player 2: {assignedColors[1]} </p>
             <p className="ms-2">player 3: {assignedColors[2]} </p>
