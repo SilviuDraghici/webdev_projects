@@ -3,11 +3,11 @@ import { DropdownButton } from 'react-bootstrap';
 import { useContext } from 'react';
 
 import AvailableColors from './AvailableColors';
-import AssignedColorsContext from './AssignedColorsContext';
+import PlayersContext from './PlayersContext';
 
 const PlayerCard = ({ name, playerNum }) => {
-    const { assignedColors, assignColor } = useContext(AssignedColorsContext);
-    const color = colors[assignedColors[playerNum - 1]];
+    const { players, assignColor } = useContext(PlayersContext);
+    const color = colors[players[playerNum - 1].color];
     
     return (
         <div className="card col-12 col-md-5 mb-4 "
