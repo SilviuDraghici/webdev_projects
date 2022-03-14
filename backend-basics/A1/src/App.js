@@ -4,24 +4,31 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import { collection, doc, onSnapshot, query, orderBy } from 'firebase/firestore';
+import { collection, onSnapshot, query, orderBy } from 'firebase/firestore';
 
 import GameLobby from "./components/GameLobby";
 import About from "./components/About";
 
+import ColorsContext from "./components/ColorsContext";
 import PlayersContext from './components/PlayersContext';
 
 import firestore from "./firebase";
 
 function App() {
-  const [players, updatePlayers] = useState([{name: "Player 1", color:"default"}, {name: "Player 2", color:"default"}, {name: "Player 3", color:"default"}, {name: "Player 4", color:"default"}]);
+  const defaultColor = { name: "default", backgroundColor: "white", color: "black" };
+
+  const [players, updatePlayers] = useState([{ name: "Player 1", color: "default" }, { name: "Player 2", color: "default" }, { name: "Player 3", color: "default" }, { name: "Player 4", color: "default" }]);
+  const [colors, updateColors] = useState([defaultColor]);
 
   useEffect(() => {
-    const colors = collection(firestore, "colors");
-    onSnapshot(colors, (snapshot) => {
+    const colorCollection = query(collection(firestore, "colors"), orderBy("name"));
+    onSnapshot(colorCollection, (snapshot) => {
+      var colors = [defaultColor];
       snapshot.forEach((doc) => {
-        console.log(doc.data());
+        colors.push(doc.data());
       })
+      console.log(`colors: ${JSON.stringify(colors)}`);
+      updateColors(colors);
     });
 
     const playerCollection = query(collection(firestore, "players"), orderBy("name"));
@@ -46,14 +53,16 @@ function App() {
   }
 
   return (
-    <PlayersContext.Provider value={{ players, assignColor }}>
-      <Router>
-        <Routes>
-          <Route path="/" element={<GameLobby />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
-      </Router>
-    </PlayersContext.Provider>
+    <ColorsContext.Provider value={colors}>
+      <PlayersContext.Provider value={{ players, assignColor }}>
+        <Router>
+          <Routes>
+            <Route path="/" element={<GameLobby />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
+        </Router>
+      </PlayersContext.Provider>
+    </ColorsContext.Provider>
   );
 }
 

@@ -3,11 +3,15 @@ import { DropdownButton } from 'react-bootstrap';
 import { useContext } from 'react';
 
 import AvailableColors from './AvailableColors';
+
+import ColorsContext from "./ColorsContext";
 import PlayersContext from './PlayersContext';
 
 const PlayerCard = ({ name, playerNum }) => {
     const { players, assignColor } = useContext(PlayersContext);
-    const color = colors[players[playerNum - 1].color];
+
+    const colors = useContext(ColorsContext);
+    const color = colors.find(color => color.name === players[playerNum - 1].color);
     
     return (
         <div className="card col-12 col-md-5 mb-4 "
@@ -24,7 +28,7 @@ const PlayerCard = ({ name, playerNum }) => {
                     onSelect={(color) => {
                         assignColor(color, playerNum)
                     }}>
-                    <AvailableColors colors={colors} />
+                    <AvailableColors />
                 </DropdownButton>
             </div>
         </div >
@@ -39,37 +43,6 @@ const PlayerCardStyle = {
 const headerStyle = {
     width: '100%',
     alignItems: 'center'
-}
-
-const colors = {
-    default: {
-        backgroundColor: 'white',
-        color: 'black'
-    },
-    red: {
-        backgroundColor: 'red',
-        color: 'white'
-    },
-    green: {
-        backgroundColor: 'green',
-        color: 'white'
-    },
-    blue: {
-        backgroundColor: 'blue',
-        color: 'white'
-    },
-    yellow: {
-        backgroundColor: 'yellow',
-        color: 'black'
-    },
-    purple: {
-        backgroundColor: 'purple',
-        color: 'black'
-    },
-    orange: {
-        backgroundColor: 'orange',
-        color: 'black'
-    }
 }
 
 export default PlayerCard

@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 
 import PlayerCard from './PlayerCard';
+
 import PlayersContext from './PlayersContext';
 
 const Players = () => {
