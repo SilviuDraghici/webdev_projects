@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import { collection, onSnapshot, query, orderBy } from 'firebase/firestore';
+import { collection, onSnapshot, query, orderBy, doc, setDoc } from 'firebase/firestore';
 
 import GameLobby from "./components/GameLobby";
 import About from "./components/About";
@@ -37,7 +37,6 @@ function App() {
       snapshot.forEach((doc) => {
         players[doc.id] = doc.data();
       })
-      console.log(`snapshot changes: ${snapshot.docChanges()}`);
       console.log(`players: ${JSON.stringify(players)}`);
       updatePlayers(players);
     });
@@ -46,12 +45,8 @@ function App() {
 
   const assignColor = (color, playerNum) => {
     console.log(`${players[playerNum].name} selected: ${color}`);
-    const newAssignment = new Object();
-    for (const [key, value] of Object.entries(players)) {
-      newAssignment[key] = value;
-    }
-    newAssignment[playerNum].color = color;
-    updatePlayers(newAssignment);
+    const playerRef = doc(firestore, 'players', playerNum);
+    setDoc(playerRef, { color: color }, { merge: true });
   }
 
   return (
