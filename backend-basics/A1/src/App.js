@@ -33,10 +33,11 @@ function App() {
 
     const playerCollection = query(collection(firestore, "players"), orderBy("name"));
     onSnapshot(playerCollection, (snapshot) => {
-      var players = [];
+      var players = new Object();
       snapshot.forEach((doc) => {
-        players.push(doc.data());
+        players[doc.id] = doc.data();
       })
+      console.log(`snapshot changes: ${snapshot.docChanges()}`);
       console.log(`players: ${JSON.stringify(players)}`);
       updatePlayers(players);
     });
@@ -44,11 +45,12 @@ function App() {
   }, []);
 
   const assignColor = (color, playerNum) => {
-    //console.log(`color selected: ${color}`);
-    const newAssignment = [...players];
-    console.log(`newAssignment: ${JSON.stringify(newAssignment)}`);
-    newAssignment[playerNum - 1].color = color;
-    console.log(`new color assignment: ${newAssignment}`);
+    console.log(`${players[playerNum].name} selected: ${color}`);
+    const newAssignment = new Object();
+    for (const [key, value] of Object.entries(players)) {
+      newAssignment[key] = value;
+    }
+    newAssignment[playerNum].color = color;
     updatePlayers(newAssignment);
   }
 

@@ -9,7 +9,7 @@ const AvailableColors = () => {
     const colors = useContext(ColorsContext);
 
     const { players, } = useContext(PlayersContext);
-    const playerColors = players.map(player => player.color);
+    const playerColors = Object.keys(players).map((key) => players[key].color);
     
     return (
         <>
@@ -19,7 +19,7 @@ const AvailableColors = () => {
                         style={color}>{color.name}</Dropdown.Item>
                     : null
             })}
-            
+
             <Dropdown.Divider />
             <Dropdown.Item eventKey="default"
                 style={colors['default']}>reset</Dropdown.Item>

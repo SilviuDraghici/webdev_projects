@@ -11,7 +11,7 @@ const PlayerCard = ({ name, playerNum }) => {
     const { players, assignColor } = useContext(PlayersContext);
 
     const colors = useContext(ColorsContext);
-    const color = colors.find(color => color.name === players[playerNum - 1].color);
+    const color = colors.find(color => color.name === players[playerNum].color);
     
     return (
         <div className="card col-12 col-md-5 mb-4 "
