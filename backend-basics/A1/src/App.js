@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { collection, onSnapshot, query, orderBy, doc, setDoc } from 'firebase/firestore';
 
 import GameLobby from "./components/GameLobby";
+import Login from "./components/Login";
 import About from "./components/About";
 
 import ColorsContext from "./components/ColorsContext";
@@ -55,6 +56,7 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<GameLobby />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/about" element={<About />} />
           </Routes>
         </Router>
