@@ -12,7 +12,7 @@ function GameLobby() {
       <Header />
       <Players />
       <Link to="/about">
-        <Button variant="secondary">About</Button>
+        <Button variant="secondary" className="mb-4">About</Button>
       </Link>
     </div>
   );
@@ -20,7 +20,7 @@ function GameLobby() {
 
 const pageStyle = {
   backgroundColor: '#565051',
-  height: '100%'
+  minHeight: '100vh'
 }
 
 export default GameLobby;
