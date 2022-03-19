@@ -4,24 +4,41 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+import { onAuthStateChanged } from "firebase/auth";
 import { collection, onSnapshot, query, orderBy, doc, setDoc } from 'firebase/firestore';
 
 import GameLobby from "./components/GameLobby";
 import Login from "./components/Login";
 import About from "./components/About";
 
+import UserContext from "./components/UserContext";
 import ColorsContext from "./components/ColorsContext";
 import PlayersContext from './components/PlayersContext';
 
-import firestore from "./firebase";
+import { auth, firestore } from "./firebase";
+
 
 function App() {
   const defaultColor = { name: "default", backgroundColor: "white", color: "black" };
+
+  const [user, setUser] = useState(null);
 
   const [players, updatePlayers] = useState([{ name: "Player 1", color: "default" }, { name: "Player 2", color: "default" }, { name: "Player 3", color: "default" }, { name: "Player 4", color: "default" }]);
   const [colors, updateColors] = useState([defaultColor]);
 
   useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        console.log(`User signed in:  ${JSON.stringify(user)}`);
+        setUser(user);
+      } else {
+        console.log("User signed out");
+        setUser(null);
+      }
+    });
+
     const colorCollection = query(collection(firestore, "colors"), orderBy("name"));
     onSnapshot(colorCollection, (snapshot) => {
       var colors = [defaultColor];
@@ -34,7 +51,7 @@ function App() {
 
     const playerCollection = query(collection(firestore, "players"), orderBy("name"));
     onSnapshot(playerCollection, (snapshot) => {
-      var players = new Object();
+      var players = {};
       snapshot.forEach((doc) => {
         players[doc.id] = doc.data();
       })
@@ -51,17 +68,19 @@ function App() {
   }
 
   return (
-    <ColorsContext.Provider value={colors}>
-      <PlayersContext.Provider value={{ players, assignColor }}>
-        <Router>
-          <Routes>
-            <Route path="/" element={<GameLobby />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/about" element={<About />} />
-          </Routes>
-        </Router>
-      </PlayersContext.Provider>
-    </ColorsContext.Provider>
+    <UserContext.Provider value={user}>
+      <ColorsContext.Provider value={colors}>
+        <PlayersContext.Provider value={{ players, assignColor }}>
+          <Router>
+            <Routes>
+              <Route path="/" element={<GameLobby />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/about" element={<About />} />
+            </Routes>
+          </Router>
+        </PlayersContext.Provider>
+      </ColorsContext.Provider>
+    </UserContext.Provider>
   );
 }
 

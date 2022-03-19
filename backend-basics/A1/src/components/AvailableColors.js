@@ -14,7 +14,7 @@ const AvailableColors = () => {
     return (
         <>
             {colors.map((color, index) => {
-                return !playerColors.includes(color.name) && color.name != "default" ?
+                return !playerColors.includes(color.name) && color.name !== "default" ?
                     <Dropdown.Item eventKey={color.name} key={index}
                         style={color}>{color.name}</Dropdown.Item>
                     : null

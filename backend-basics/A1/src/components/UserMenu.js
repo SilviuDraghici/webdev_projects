@@ -1,13 +1,20 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 
 import { Link } from "react-router-dom";
+
+import { signOut } from "firebase/auth";
 
 import IconButton from '@mui/material/IconButton';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
+import UserContext from './UserContext';
+import { auth } from "../firebase";
+
 const UserMenu = () => {
+    const user = useContext(UserContext);
+
     const [anchorEl, setanchorEl] = useState(null);
 
     const handleMenu = (event) => {
@@ -16,6 +23,17 @@ const UserMenu = () => {
 
     const handleClose = () => {
         setanchorEl(null);
+    };
+
+    const signOutUser = () => {
+        console.log("signing out");
+        signOut(auth).then(() => {
+            // Sign-out successful.
+            console.log("sign out successful");
+        }).catch((error) => {
+            // An error happened.
+            console.log("sign out error");
+        });
     };
 
     return (
@@ -46,17 +64,15 @@ const UserMenu = () => {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
-                <MenuItem component={Link} to={'/login'}>Login</MenuItem>
-                <MenuItem component={Link} to="/createAccount" onClick={handleClose}>Create Account</MenuItem>
+                {user ? [
+                    <MenuItem onClick={signOutUser}>Sign Out</MenuItem>
+                ] : [
+                    <MenuItem component={Link} to={'/login'}>Login</MenuItem>,
+                    <MenuItem component={Link} to="/createAccount" onClick={handleClose}>Create Account</MenuItem>
+                ]}
             </Menu>
         </>
     )
-}
-
-const headerStyle = {
-    backgroundColor: '#34282C',
-    color: 'white',
-    width: '100%'
 }
 
 export default UserMenu
