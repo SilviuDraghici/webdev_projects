@@ -64,9 +64,7 @@ function App() {
 
   const assignColor = (color, playerNum) => {
     console.log(`${players[playerNum].name} selected: ${color}`);
-    const playerRef = doc(firestore, 'players', playerNum);
-    setDoc(playerRef, { color: color }, { merge: true });
-    
+
     const selectColor = httpsCallable(functions, 'selectColor');
     selectColor({ color: color });
   }

@@ -3,6 +3,8 @@ Variables filled for this project:
 to have the emulator save and load all data:
 firebase emulators:start --import .\data\ --export-on-exit
 
+export auth from prod:
+firebase auth:export save_file.json --format=json
 
 Import database from prod again:
 
