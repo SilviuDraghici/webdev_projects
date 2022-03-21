@@ -65,10 +65,10 @@ const UserMenu = () => {
                 onClose={handleClose}
             >
                 {user ? [
-                    <MenuItem onClick={signOutUser}>Sign Out</MenuItem>
+                    <MenuItem onClick={signOutUser} key="sign_out">Sign Out</MenuItem>
                 ] : [
-                    <MenuItem component={Link} to={'/login'}>Login</MenuItem>,
-                    <MenuItem component={Link} to="/createAccount" onClick={handleClose}>Create Account</MenuItem>
+                    <MenuItem component={Link} to={'/login'} key="login">Login</MenuItem>,
+                    <MenuItem component={Link} to="/createAccount" onClick={handleClose} key="create_account">Create Account</MenuItem>
                 ]}
             </Menu>
         </>

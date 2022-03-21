@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { onAuthStateChanged } from "firebase/auth";
 import { collection, onSnapshot, query, orderBy, doc, setDoc } from 'firebase/firestore';
+import { httpsCallable } from "firebase/functions";
 
 import GameLobby from "./components/GameLobby";
 import Login from "./components/Login";
@@ -15,7 +16,7 @@ import UserContext from "./components/UserContext";
 import ColorsContext from "./components/ColorsContext";
 import PlayersContext from './components/PlayersContext';
 
-import { auth, firestore } from "./firebase";
+import { auth, firestore, functions } from "./firebase";
 
 
 function App() {
@@ -65,6 +66,9 @@ function App() {
     console.log(`${players[playerNum].name} selected: ${color}`);
     const playerRef = doc(firestore, 'players', playerNum);
     setDoc(playerRef, { color: color }, { merge: true });
+    
+    const selectColor = httpsCallable(functions, 'selectColor');
+    selectColor({ color: color });
   }
 
   return (

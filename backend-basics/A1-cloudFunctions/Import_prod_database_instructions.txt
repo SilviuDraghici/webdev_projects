@@ -1,6 +1,14 @@
 Variables filled for this project:
 
-Import database again:
+to have the emulator save and load all data:
+firebase emulators:start --import .\data\ --export-on-exit
+
+
+Import database from prod again:
+
+use
+https://console.cloud.google.com/storage/browser
+to delete existing export
 
 gcloud firestore export gs://learningfullstack-6df15.appspot.com/database_export
 
