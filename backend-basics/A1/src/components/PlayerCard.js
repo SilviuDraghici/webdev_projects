@@ -10,7 +10,7 @@ import UserContext from './UserContext';
 
 const PlayerCard = ({ name, playerNum }) => {
     const { players, assignColor } = useContext(PlayersContext);
-    const user = useContext(UserContext);
+    const {user, isAdmin} = useContext(UserContext);
 
     const colors = useContext(ColorsContext);
     const color = colors.find(color => color.name === players[playerNum].color);
@@ -26,7 +26,7 @@ const PlayerCard = ({ name, playerNum }) => {
                 </header>
             </div>
             <div className="card-body" style={{minHeight: 70}}>
-                { user && user.uid === playerNum ?
+                { user && (user.uid === playerNum || isAdmin)?
                     <DropdownButton id="dropdown-basic-button" title="Select Color"
                         variant="dark"
                         onSelect={(color) => {

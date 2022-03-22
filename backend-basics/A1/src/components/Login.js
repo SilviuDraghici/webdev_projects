@@ -23,7 +23,7 @@ import Button from '@mui/material/Button';
 import UserContext from './UserContext';
 
 function Login() {
-  const user = useContext(UserContext);
+  const { user, } = useContext(UserContext);
 
   const [loginStatus, setLoginStatus] = useState("signed_out");
 

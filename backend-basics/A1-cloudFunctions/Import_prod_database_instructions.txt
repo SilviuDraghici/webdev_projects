@@ -1,3 +1,7 @@
+to kill emulator running on specific port:
+netstat -ano|findstr "PID :5002"
+taskkill /pid 9164 /f
+
 Variables filled for this project:
 
 to have the emulator save and load all data:

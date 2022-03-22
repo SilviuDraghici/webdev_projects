@@ -13,7 +13,7 @@ import UserContext from './UserContext';
 import { auth } from "../firebase";
 
 const UserMenu = () => {
-    const user = useContext(UserContext);
+    const { user, } = useContext(UserContext);
 
     const [anchorEl, setanchorEl] = useState(null);
 

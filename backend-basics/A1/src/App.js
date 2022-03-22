@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { onAuthStateChanged } from "firebase/auth";
-import { collection, onSnapshot, query, orderBy, doc, setDoc } from 'firebase/firestore';
+import { collection, onSnapshot, query, orderBy, doc, getDoc } from 'firebase/firestore';
 import { httpsCallable } from "firebase/functions";
 
 import GameLobby from "./components/GameLobby";
@@ -22,21 +22,29 @@ import { auth, firestore, functions } from "./firebase";
 function App() {
   const defaultColor = { name: "default", backgroundColor: "white", color: "black" };
 
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({ user: null, isAdmin: false });
 
   const [players, updatePlayers] = useState([{ name: "Player 1", color: "default" }, { name: "Player 2", color: "default" }, { name: "Player 3", color: "default" }, { name: "Player 4", color: "default" }]);
   const [colors, updateColors] = useState([defaultColor]);
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, async (user) => {
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
         console.log(`User signed in:  ${JSON.stringify(user)}`);
-        setUser(user);
+        const docRef = doc(firestore, "admins", user.uid);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          console.log("Admin!");
+        } else {
+          // doc.data() will be undefined in this case
+          console.log("Not an Admin!");
+        }
+        setUser({ user:user, isAdmin: docSnap.exists() });
       } else {
         console.log("User signed out");
-        setUser(null);
+        setUser({ user: null, isAdmin: false });
       }
     });
 
@@ -66,7 +74,7 @@ function App() {
     console.log(`Attempting selectColor`);
 
     const selectColor = httpsCallable(functions, 'selectColor');
-    selectColor({ color: color }).then((result) => {
+    selectColor({ uid: playerNum, color: color }).then((result) => {
       console.log(`${players[playerNum].name} selected: ${color}`);
     }).catch((error) => {
       console.log(`Error selecting color: ${error.message}`);
