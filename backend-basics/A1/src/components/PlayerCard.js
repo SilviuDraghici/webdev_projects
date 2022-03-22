@@ -6,13 +6,16 @@ import AvailableColors from './AvailableColors';
 
 import ColorsContext from "./ColorsContext";
 import PlayersContext from './PlayersContext';
+import UserContext from './UserContext';
 
 const PlayerCard = ({ name, playerNum }) => {
     const { players, assignColor } = useContext(PlayersContext);
+    const user = useContext(UserContext);
 
     const colors = useContext(ColorsContext);
     const color = colors.find(color => color.name === players[playerNum].color);
-    
+
+    //console.log(`playerNum: ${playerNum}, user.uid: ${user.uid}`);
     return (
         <div className="card col-12 col-md-5 mb-4 "
             style={{ ...PlayerCardStyle, ...color }}>
@@ -22,14 +25,16 @@ const PlayerCard = ({ name, playerNum }) => {
                     <h1>{name}</h1>
                 </header>
             </div>
-            <div className="card-body">
-                <DropdownButton id="dropdown-basic-button" title="Select Color"
-                    variant="dark"
-                    onSelect={(color) => {
-                        assignColor(color, playerNum)
-                    }}>
-                    <AvailableColors />
-                </DropdownButton>
+            <div className="card-body" style={{minHeight: 70}}>
+                { user && user.uid === playerNum ?
+                    <DropdownButton id="dropdown-basic-button" title="Select Color"
+                        variant="dark"
+                        onSelect={(color) => {
+                            assignColor(color, playerNum)
+                        }}>
+                        <AvailableColors />
+                    </DropdownButton>
+                : null}
             </div>
         </div >
     )

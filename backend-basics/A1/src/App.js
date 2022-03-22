@@ -63,10 +63,14 @@ function App() {
   }, []);
 
   const assignColor = (color, playerNum) => {
-    console.log(`${players[playerNum].name} selected: ${color}`);
+    console.log(`Attempting selectColor`);
 
     const selectColor = httpsCallable(functions, 'selectColor');
-    selectColor({ color: color });
+    selectColor({ color: color }).then((result) => {
+      console.log(`${players[playerNum].name} selected: ${color}`);
+    }).catch((error) => {
+      console.log(`Error selecting color: ${error.message}`);
+    });
   }
 
   return (

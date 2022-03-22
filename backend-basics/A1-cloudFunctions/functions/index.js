@@ -6,14 +6,14 @@ const admin = require('firebase-admin');
 admin.initializeApp();
 
 exports.selectColor = functions.https.onCall((data, context)=> {
-	console.log("setColor called!");
-	if(context.auth){
-		console.log(`uuid: ${context.auth.uid}`);
-		console.log(`auth: ${JSON.stringify(context.auth)}`);
+	if(!context.auth){
+		console.log(`Unauthenticated call made!`);
+		throw new functions.https.HttpsError(
+			'unauthenticated',
+			'Must be signed in to change player status!'
+		);
 	}
-	console.log(`collection: ${JSON.stringify(admin.firestore().collection('players'))}`);
-	//admin.firestore().collection('players').add(data);
 	const player = admin.firestore().collection('players').doc(context.auth.uid);
-	console.log(`collection: ${JSON.stringify(player)}`);
-	player.set(data, { merge: true });;
+	console.log(`updating doc (${context.auth.uid}) with {color: ${data.color}}`);
+	return player.set(data, { merge: true });
 });
