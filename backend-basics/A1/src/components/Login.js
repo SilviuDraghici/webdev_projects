@@ -63,7 +63,6 @@ function Login() {
         // Signed in
         console.log("Sign in Successful!");
         setLoginStatus("login_successful");
-        console.log(`Login Result: ${JSON.stringify(userCredential)}`);
         const user = userCredential.user;
       })
       .catch((error) => {

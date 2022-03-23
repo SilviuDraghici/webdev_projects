@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { collection, onSnapshot, query, orderBy, doc, getDoc } from 'firebase/firestore';
 import { httpsCallable } from "firebase/functions";
+import { ref } from "firebase/storage";
 
 import GameLobby from "./components/GameLobby";
 import Login from "./components/Login";
@@ -16,7 +17,7 @@ import UserContext from "./components/UserContext";
 import ColorsContext from "./components/ColorsContext";
 import PlayersContext from './components/PlayersContext';
 
-import { auth, firestore, functions } from "./firebase";
+import { auth, firestore, functions, storage } from "./firebase";
 
 
 function App() {
@@ -32,7 +33,6 @@ function App() {
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
-        console.log(`User signed in:  ${JSON.stringify(user)}`);
         const docRef = doc(firestore, "admins", user.uid);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
@@ -54,7 +54,7 @@ function App() {
       snapshot.forEach((doc) => {
         colors.push(doc.data());
       })
-      console.log(`colors: ${JSON.stringify(colors)}`);
+      console.log(`Received colors list from server!`);
       updateColors(colors);
     });
 
@@ -64,7 +64,7 @@ function App() {
       snapshot.forEach((doc) => {
         players[doc.id] = doc.data();
       })
-      console.log(`players: ${JSON.stringify(players)}`);
+      console.log(`Received players list from server!`);
       updatePlayers(players);
     });
 
@@ -80,7 +80,7 @@ function App() {
       console.log(`Error selecting color: ${error.message}`);
     });
   }
-
+  
   return (
     <UserContext.Provider value={user}>
       <ColorsContext.Provider value={colors}>
