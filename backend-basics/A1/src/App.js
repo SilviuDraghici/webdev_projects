@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { collection, onSnapshot, query, orderBy, doc, getDoc } from 'firebase/firestore';
 import { httpsCallable } from "firebase/functions";
-import { ref } from "firebase/storage";
+import { ref, } from "firebase/storage";
 
 import GameLobby from "./components/GameLobby";
 import Login from "./components/Login";

@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 
 import { Link } from "react-router-dom";
 
@@ -6,14 +6,30 @@ import { signOut } from "firebase/auth";
 
 import IconButton from '@mui/material/IconButton';
 import AccountCircle from '@mui/icons-material/AccountCircle';
+import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
 import UserContext from './UserContext';
-import { auth } from "../firebase";
+import { auth, storage } from "../firebase";
+import { ref, getDownloadURL } from 'firebase/storage';
 
 const UserMenu = () => {
     const { user, } = useContext(UserContext);
+
+    const [imageUrl, setImageUrl] = useState(null);
+
+    useEffect(() => {
+        if (user) {
+            const imgRef = ref(storage, `images/${user.uid}`);
+            getDownloadURL(imgRef).then((url) => {
+                setImageUrl(url);
+                console.log(`image found! url: ${imageUrl}`);
+            }).catch((error) => {
+                console.log(`Error getting image url: ${error.message}`);
+            });
+        }
+    }, [user]);
 
     const [anchorEl, setanchorEl] = useState(null);
 
@@ -46,7 +62,11 @@ const UserMenu = () => {
                 onClick={handleMenu}
                 color="inherit"
             >
-                <AccountCircle sx={{ fontSize: 40 }} />
+                {user ?
+                    <Avatar alt="Remy Sharp" src={imageUrl} />
+                    :
+                    <AccountCircle sx={{ fontSize: 40 }} />
+                }
             </IconButton>
             <Menu
                 id="menu-appbar"

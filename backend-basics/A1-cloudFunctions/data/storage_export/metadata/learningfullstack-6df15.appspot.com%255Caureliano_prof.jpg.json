@@ -1,0 +1,20 @@
+{
+  "name": "aureliano_prof.jpg",
+  "bucket": "learningfullstack-6df15.appspot.com",
+  "contentType": "image/jpeg",
+  "metageneration": 1,
+  "generation": 1648176498080,
+  "storageClass": "STANDARD",
+  "contentDisposition": "inline",
+  "cacheControl": "public, max-age=3600",
+  "contentEncoding": "identity",
+  "downloadTokens": [
+    "db531c58-9880-4d64-aad8-cb3f0df21952"
+  ],
+  "etag": "SbeIszEzDTxTPmguLP/fG29oYJg",
+  "timeCreated": "2022-03-25T02:48:18.080Z",
+  "updated": "2022-03-25T02:48:18.080Z",
+  "size": 553086,
+  "md5Hash": "wVVJ2fEqUa4PUl5mZT27Mg==",
+  "crc32c": "3105656057"
+}
